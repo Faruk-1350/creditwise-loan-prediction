@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -177,6 +176,12 @@ def load_and_train():
  
 model, scaler, features = load_and_train()
  
+# ---------- Debug info (temporary) ----------
+with st.expander("Debug info (temporary — click to check model training data)"):
+    debug_df = pd.read_csv("loan_approval_data.csv")
+    st.write("Total rows in CSV:", len(debug_df))
+    st.write("Loan_Approved value counts:", debug_df["Loan_Approved"].value_counts().to_dict())
+ 
 # ---------- Input form ----------
 st.markdown('<div class="cw-section-label">Applicant details</div>', unsafe_allow_html=True)
 st.markdown('<div class="cw-card">', unsafe_allow_html=True)
@@ -236,4 +241,3 @@ st.markdown("""
 <div class="cw-footer">
 Built by Md Faruk Ansari. <a href="https://github.com/Faruk-1350/creditwise-loan-prediction" target="_blank">View the source on GitHub</a>.
 </div>
-""", unsafe_allow_html=True)
